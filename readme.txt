@@ -3,6 +3,11 @@ Mutation-source-code: Projects that use mutation testing, based on mutation oper
 a function. The mutated program needs to be strongly killed by the designed test cases. At least three different mutation operators should be
 used.
 
+Team Members:
+- Mohit Choudhary (MT2020134)
+- Aditya Satam (MT2020058)
+- Shubham Ahlawat (MT2020163)
+
 Source code is in maven-mutation-testing/CalculatorService file.
 
 Designed test cases are in maven-mutation-testing/TestCalculatorService file.
