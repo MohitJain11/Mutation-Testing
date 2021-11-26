@@ -3,6 +3,7 @@ package com.mkyong.examples;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TestCalculatorService {
 
@@ -229,6 +230,42 @@ public class TestCalculatorService {
         assertEquals(0, obj.areaOfCylinder(1, -1));
         assertEquals(0, obj.areaOfCylinder(2, -3));
         assertEquals(50.272, obj.areaOfCylinder(2, 4));
+    }
+
+    @Test
+    public void testMaximum() {
+        int arr[] = {};
+        int b[] = {1, 2, 3};
+        int c[] = {1, 2, 3, 5, 4, 5, 7, 3, 0, 7};
+        CalculatorService obj = new CalculatorService();
+        assertEquals(-1, obj.Maximum(arr));
+        assertEquals(2, obj.Maximum(b));
+        assertEquals(9, obj.Maximum(c));
+    }
+
+    @Test
+    public void testMinimum() {
+        int arr[] = {};
+        int b[] = {1, 2, 3};
+        int c[] = {1, 2, 3, 5, 4, 5, 7, 3, 0, 0};
+        CalculatorService obj = new CalculatorService();
+        assertEquals(-1, obj.Minimum(arr));
+        assertEquals(0, obj.Minimum(b));
+        assertEquals(9, obj.Minimum(c));
+    }
+
+    @Test
+    public void testStringLength() {
+        CalculatorService obj = new CalculatorService();
+        assertEquals(0, obj.stringLength(null));
+        assertEquals(4, obj.stringLength("abcd"));
+    }
+
+    @Test
+    public void testStringReverse() {
+        CalculatorService obj = new CalculatorService();
+        assertNull(null, obj.stringReverse(null));
+        assertEquals("dcba", obj.stringReverse("abcd"));
     }
 
 

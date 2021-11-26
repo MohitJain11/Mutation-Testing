@@ -216,6 +216,66 @@ public class CalculatorService {
         }
     }
 
+    //
+    public int Maximum(int arr[]) {
+        int i;
+
+        if(arr.length <=0)
+            return -1;
+        // Initialize maximum element
+        else{
+            int index = 0;
+            int max = arr[0];
+            // Traverse array elements from second and
+            // compare every element with current max
+            for (i = 1; i < arr.length; i++)
+                if (arr[i] >= max) {
+                    max = arr[i];
+                    index = i;
+                }
+            return index;
+        }
+
+    }
+
+    public int Minimum(int arr[]) {
+        int i;
+        if(arr.length <=0)
+            return -1;
+        // Initialize minimum element
+        else{
+            int index = 0;
+            int min = arr[0];
+            // Traverse array elements from second and
+            // compare every element with current max
+            for (i = 1; i < arr.length; i++)
+                if (arr[i] <= min) {
+                    index = i;
+                    min = arr[i];
+                }
+            return index;
+        }
+    }
+
+    public int stringLength(String fname) {
+        if(fname == null)
+            return 0;
+        else
+            return fname.length();
+    }
+
+    public String stringReverse(String fname) {
+        String ans = "";
+        if(fname == null)
+            return null;
+        else {
+            for(int i=fname.length()-1;i>=0;i--){
+                ans += fname.charAt(i);
+            }
+        }
+        return ans;
+    }
+
 
 //    public static void main(String[] args) {
 //        CalculatorService calculator = new CalculatorService();
