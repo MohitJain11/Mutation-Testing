@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class CalculatorService {
 
     public CalculatorService() {
-        System.out.println("Scientific Calculator");
+//        System.out.println("Scientific Calculator");
     }
 
     public double cube(int n1) {
@@ -38,37 +38,37 @@ public class CalculatorService {
 
     //
     public double inverseCosin(double number) {
+        double ans = Double.NEGATIVE_INFINITY;
         if (number < -1)
             return 0;
-        else if (number > 1)
-            return 0;
+        else if(number <= 1)
+            ans = Math.acos(number);
         else {
-            return Math.acos(number);
+            ans = Double.NEGATIVE_INFINITY;
         }
+        return ans;
     }
 
     public double cosin(double number) {
         double x = Math.toRadians(number);
-        System.out.println("cos of " + number + "is " + Math.cos(x));
+//        System.out.println("cos of " + number + "is " + Math.cos(x));
         return Math.cos(x);
     }
 
     public double sine(double number) {
         double x = Math.toRadians(number);
-        System.out.println("sine of " + number + "is " + Math.sin(x));
+//        System.out.println("sine of " + number + "is " + Math.sin(x));
         return Math.sin(x);
     }
 
     public double tangent(double number) {
         double x = Math.toRadians(number);
-        System.out.println("tangent of " + number + "is " + Math.tan(x));
+//        System.out.println("tangent of " + number + "is " + Math.tan(x));
         return Math.tan(x);
     }
 
     public int combination(int n, int r) {
-        if (n <= 0)
-            return 0;
-        else if (r <= 0)
+        if (r < 0)
             return 0;
         else if (n < r)
             return 0;
@@ -106,12 +106,16 @@ public class CalculatorService {
     }
 
     public int modulus(int n1, int n2) {
+        int ans = Integer.MAX_VALUE;
         if (n2 <= 0)
-            return 0;
+            ans = Integer.MIN_VALUE;
         else if (n1 < n2)
-            return 0;
+            ans = Integer.MIN_VALUE;
+        else if(n1 == n2)
+            ans = 0;
         else
-            return n1 % n2;
+            ans = n1 % n2;
+        return ans;
     }
 
     public String isPositive(int number) {
@@ -127,8 +131,10 @@ public class CalculatorService {
     public double powerFunction(int number, int power) {
         if (power < 0)
             return 0;
-        else if (number == 0)
-            return 0;
+//        else if (number == 0 && power != 0)
+//            return 0;
+        else if(power == 0)
+            return 1;
         else
             return Math.pow(number, power);
     }
@@ -137,8 +143,8 @@ public class CalculatorService {
         return Math.sqrt(number);
     }
 
-    public double negate(double number) {
-        if (number < 0)
+    public int negate(int number) {
+        if (number <= -1)
             return number;
         else
             return -1 * number;
@@ -163,23 +169,25 @@ public class CalculatorService {
 
     ///Areas
 
-    public double areaOfSquare(double num) {
-        if (num <= 0)
+    public int areaOfSquare(int num) {
+        if (num <= -1)
             return 0;
         else
             return num * num;
     }
 
-    public double areaOfRect(double a, double b) {
-        if (a <= 0 || b <= 0)
+    public int areaOfRect(int a, int b) {
+        if (a <= -1 || b <= -1)
             return 0;
         else
             return a * b;
     }
 
-    public double areaOfCircle(double r) {
-        if (r <= 0)
+    public double areaOfCircle(int r) {
+        if (r <= -1) {
+//            System.out.println("Radius can't be zero");
             return 0;
+        }
         else {
             int radius;
             double pi = 3.142, area;
@@ -188,8 +196,8 @@ public class CalculatorService {
         }
     }
 
-    public double areaOfSphere(double r) {
-        if (r <= 0)
+    public double areaOfSphere(int r) {
+        if (r <= -1)
             return 0;
         else {
             double pi = 3.142, area;
@@ -198,8 +206,8 @@ public class CalculatorService {
         }
     }
 
-    public double areaOfCylinder(double r, double h) {
-        if (r <= 0 || h <= 0)
+    public double areaOfCylinder(int r, int h) {
+        if (r <= -1 || h <= -1)
             return 0;
         else {
             double pi = 3.142, area;

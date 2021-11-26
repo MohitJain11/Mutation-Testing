@@ -40,9 +40,11 @@ public class TestCalculatorService {
     @Test
     public void testInverseCosin() {
         CalculatorService obj = new CalculatorService();
-        assertEquals(0, obj.inverseCosin(5));
+        assertEquals(Double.NEGATIVE_INFINITY, obj.inverseCosin(5));
         assertEquals(0, obj.inverseCosin(-10));
         assertEquals(1.5707963267948966, obj.inverseCosin(0));
+        assertEquals(3.141592653589793, obj.inverseCosin(-1));
+        assertEquals(0.0, obj.inverseCosin(1));
     }
 
     @Test
@@ -72,10 +74,10 @@ public class TestCalculatorService {
         assertEquals(0, obj.combination(0, 1));
         assertEquals(0, obj.combination(-1, 10));
         assertEquals(0, obj.combination(1, 10));
-        assertEquals(0, obj.combination(10, 0));
+        assertEquals(1, obj.combination(10, 0));
         assertEquals(0, obj.combination(5, -1));
         assertEquals(0, obj.combination(5, 20));
-
+        assertEquals(1, obj.combination(5, 5));
         assertEquals(10, obj.combination(5, 2));
     }
 
@@ -124,9 +126,10 @@ public class TestCalculatorService {
     @Test
     public void testModulus() {
         CalculatorService obj = new CalculatorService();
-        assertEquals(0, obj.division(0, 0));
-        assertEquals(0.1, obj.division(10, 100));
-        assertEquals(2.5, obj.division(10, 4));
+        assertEquals(Integer.MIN_VALUE, obj.modulus(0, 0));
+        assertEquals(Integer.MIN_VALUE, obj.modulus(10, 100));
+        assertEquals(2, obj.modulus(10, 4));
+        assertEquals(0, obj.modulus(4, 4));
     }
 
     @Test
@@ -134,14 +137,16 @@ public class TestCalculatorService {
         CalculatorService obj = new CalculatorService();
         assertEquals("positive", obj.isPositive(10));
         assertEquals("positive", obj.isPositive(0));
+        assertEquals("negative", obj.isPositive(-1));
     }
 
     @Test
     public void testPowerFunction() {
         CalculatorService obj = new CalculatorService();
         assertEquals(0, obj.powerFunction(10, -20));
-        assertEquals(0, obj.powerFunction(0, 0));
+        assertEquals(0, obj.powerFunction(0, 10));
         assertEquals(100, obj.powerFunction(10, 2));
+        assertEquals(1, obj.powerFunction(10, 0));
     }
 
     @Test
@@ -155,6 +160,7 @@ public class TestCalculatorService {
         CalculatorService obj = new CalculatorService();
         assertEquals(-4, obj.negate(4));
         assertEquals(-4, obj.negate(-4));
+        assertEquals(-1, obj.negate(-1));
     }
 
     @Test
@@ -183,6 +189,7 @@ public class TestCalculatorService {
     public void testAreaOfSquare() {
         CalculatorService obj = new CalculatorService();
         assertEquals(0, obj.areaOfSquare(-2));
+        assertEquals(0, obj.areaOfSquare(-1));
         assertEquals(0, obj.areaOfSquare(0));
         assertEquals(4, obj.areaOfSquare(2));
     }
@@ -191,15 +198,17 @@ public class TestCalculatorService {
     public void testAreaOfRect() {
         CalculatorService obj = new CalculatorService();
         assertEquals(0, obj.areaOfRect(-2, 1));
-        assertEquals(0, obj.areaOfRect(-1, -5));
         assertEquals(0, obj.areaOfRect(2, -3));
         assertEquals(8, obj.areaOfRect(2, 4));
+        assertEquals(0, obj.areaOfRect(-1, 5));
+//        assertEquals(0, obj.areaOfRect(-1, -1));
+        assertEquals(0, obj.areaOfRect(1, -1));
     }
 
     @Test
     public void testAreaOfCircle() {
         CalculatorService obj = new CalculatorService();
-        assertEquals(0, obj.areaOfCircle(-2));
+        assertEquals(0, obj.areaOfCircle(-1));
         assertEquals(0, obj.areaOfCircle(0));
         assertEquals(12.568, obj.areaOfCircle(2));
     }
@@ -207,7 +216,7 @@ public class TestCalculatorService {
     @Test
     public void testAreaOfSphere() {
         CalculatorService obj = new CalculatorService();
-        assertEquals(0, obj.areaOfSphere(-2));
+        assertEquals(0, obj.areaOfSphere(-1));
         assertEquals(0, obj.areaOfSphere(0));
         assertEquals(50.272, obj.areaOfSphere(2));
     }
@@ -216,7 +225,8 @@ public class TestCalculatorService {
     public void testAreaOfCylinder() {
         CalculatorService obj = new CalculatorService();
         assertEquals(0, obj.areaOfCylinder(-2, 1));
-        assertEquals(0, obj.areaOfCylinder(-1, -5));
+        assertEquals(0, obj.areaOfCylinder(-1, 5));
+        assertEquals(0, obj.areaOfCylinder(1, -1));
         assertEquals(0, obj.areaOfCylinder(2, -3));
         assertEquals(50.272, obj.areaOfCylinder(2, 4));
     }
